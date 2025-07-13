@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  air-quality-monitor:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - AIRQUALITY_API_KEY=${AIRQUALITY_API_KEY:-demo-key}
+      - JAVA_OPTS=-Xmx512m -Xms256m
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    restart: unless-stopped
+    networks:
+      - air-quality-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - air-quality-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./monitoring/grafana:/etc/grafana/provisioning
+    networks:
+      - air-quality-network
+
+networks:
+  air-quality-network:
+    driver: bridge
+
+volumes:
+  grafana-storage:
