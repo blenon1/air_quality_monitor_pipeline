@@ -1,65 +1,23 @@
-# Compiled class file
-*.class
+# Git
+.git
+.gitignore
 
-# Log files
-*.log
-logs/
+# Documentation
+README.md
+*.md
 
-# SBT specific
-.cache
-.history
-.lib/
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
-
-# Scala-IDE specific
-.scala_dependencies
-.worksheet
-.cache-main
-.cache-tests
-
-# IntelliJ IDEA
+# IDE
 .idea/
-*.iws
-*.iml
-*.ipr
-
-# Eclipse
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-# VS Code
 .vscode/
+*.iml
 
-# OS specific
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Application specific
-*.pid
-application.conf
-!application.conf.example
+# Logs et données
+logs/
+data/
+tmp/
 
 # Docker
 .dockerignore
 
-# Data directories
-data/
+# Environnement
+.env

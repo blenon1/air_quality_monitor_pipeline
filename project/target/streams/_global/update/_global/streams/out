@@ -1,0 +1,7 @@
+[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = true, force = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/home/rakuzan/pf_project_air_quality_monitor/project/"), "pf_project_air_quality_monitor-build")...[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating pf_project_air_quality_monitor-build[0m
+[0m[[0m[0minfo[0m] [0m[0mResolved pf_project_air_quality_monitor-build dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mFetching artifacts of pf_project_air_quality_monitor-build[0m
+[0m[[0m[0minfo[0m] [0m[0mFetched artifacts of pf_project_air_quality_monitor-build[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/home/rakuzan/pf_project_air_quality_monitor/project/"), "pf_project_air_quality_monitor-build")[0m

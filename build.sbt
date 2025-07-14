@@ -1,47 +1,114 @@
-ThisBuild / version := "0.1.0-SNAPSHOT"
+// ThisBuild / version := "0.1.0-SNAPSHOT"
+// ThisBuild / scalaVersion := "2.13.12"
 
+// lazy val root = (project in file("."))
+//   .settings(
+//     name := "air-quality-monitor",
+    
+//     // Configuration Assembly
+//     assembly / assemblyMergeStrategy := {
+//       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+//       case _ => MergeStrategy.first
+//     }
+//   )
+
+// ThisBuild / version := "0.1.0-SNAPSHOT"
+// ThisBuild / scalaVersion := "2.13.12"
+
+// lazy val root = (project in file("."))
+//   .settings(
+//     name := "air-quality-monitor",
+    
+//     libraryDependencies ++= Seq(
+//       // Core Scala
+//       "org.scala-lang" %% "scala-library" % scalaVersion.value,
+      
+//       // Collections parallèles
+//       "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+      
+//       // Configuration et Logging
+//       "com.typesafe" % "config" % "1.4.2",
+//       "ch.qos.logback" % "logback-classic" % "1.2.12",
+//       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      
+//       // Tests
+//       "org.scalatest" %% "scalatest" % "3.2.17" % Test
+//     ),
+    
+//     // Configuration Assembly
+//     assembly / assemblyMergeStrategy := {
+//       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+//       case "application.conf" => MergeStrategy.concat
+//       case "reference.conf" => MergeStrategy.concat
+//       case _ => MergeStrategy.first
+//     },
+    
+//     // Nom du JAR
+//     assembly / assemblyJarName := s"${name.value}-assembly-${version.value}.jar"
+//   )
+
+// ThisBuild / version := "0.1.0-SNAPSHOT"
+// ThisBuild / scalaVersion := "2.13.12"
+
+// lazy val root = (project in file("."))
+//   .settings(
+//     name := "air-quality-monitor",
+    
+//     libraryDependencies ++= Seq(
+//       // Collections parallèles
+//       "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+      
+//       // Configuration et Logging
+//       "com.typesafe" % "config" % "1.4.2",
+//       "ch.qos.logback" % "logback-classic" % "1.2.12",
+//       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      
+//       // Tests
+//       "org.scalatest" %% "scalatest" % "3.2.17" % Test
+//     ),
+    
+//     // Configuration Assembly
+//     assembly / assemblyMergeStrategy := {
+//       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+//       case "application.conf" => MergeStrategy.concat
+//       case "reference.conf" => MergeStrategy.concat
+//       case _ => MergeStrategy.first
+//     },
+    
+//     // Nom du JAR
+//     assembly / assemblyJarName := s"${name.value}-assembly-${version.value}.jar"
+//   )
+
+
+
+ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := "2.13.12"
 
 lazy val root = (project in file("."))
   .settings(
     name := "air-quality-monitor",
+    
     libraryDependencies ++= Seq(
-      // Akka Streams
-      "com.typesafe.akka" %% "akka-stream" % "2.8.5",
-      "com.typesafe.akka" %% "akka-actor-typed" % "2.8.5",
+      // Configuration et Logging
+      "com.typesafe" % "config" % "1.4.2",
+      "ch.qos.logback" % "logback-classic" % "1.2.12",
       
-      // Cats for functional programming
-      "org.typelevel" %% "cats-core" % "2.10.0",
-      "org.typelevel" %% "cats-effect" % "3.5.2",
-      
-      // HTTP client
-      "com.softwaremill.sttp.client3" %% "core" % "3.9.1",
-      "com.softwaremill.sttp.client3" %% "circe" % "3.9.1",
-      
-      // JSON parsing
-      "io.circe" %% "circe-core" % "0.14.6",
-      "io.circe" %% "circe-generic" % "0.14.6",
-      "io.circe" %% "circe-parser" % "0.14.6",
-      
-      // Configuration
-      "com.typesafe" % "config" % "1.4.3",
-      
-      // Logging
-      "ch.qos.logback" % "logback-classic" % "1.4.11",
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
-      
-      // Testing
-      "org.scalatest" %% "scalatest" % "3.2.17" % Test,
-      "org.scalatestplus" %% "scalacheck-1-17" % "3.2.17.0" % Test,
-      "com.typesafe.akka" %% "akka-stream-testkit" % "2.8.5" % Test
+      // Tests
+      "org.scalatest" %% "scalatest" % "3.2.17" % Test
     ),
     
-    // Compiler options
-    scalacOptions ++= Seq(
-      "-deprecation",
-      "-encoding", "UTF-8",
-      "-feature",
-      "-unchecked",
-      "-Xlint"
-    )
-  )
+    // Spécifier la classe principale
+    Compile / mainClass := Some("com.airquality.Main"),
+    assembly / mainClass := Some("com.airquality.Main"),
+    
+    // Configuration Assembly
+    assembly / assemblyMergeStrategy := {
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case "application.conf" => MergeStrategy.concat
+      case "reference.conf" => MergeStrategy.concat
+      case _ => MergeStrategy.first
+    },
+    
+    // Nom du JAR
+    assembly / assemblyJarName := s"${name.value}-assembly-${version.value}.jar"
+)
